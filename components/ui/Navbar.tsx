@@ -15,7 +15,7 @@ const data =[
     <div className='fluid-container relative z-20'>
             <div className='absolute top-10 flex justify-between w-full items-center'>
                <Link href={"/"}>
-               <Image src={'/logo.svg'} width={200} height={60} alt=''/>
+               <Image src={'/Logo.svg'} width={200} height={60} alt=''/>
                </Link>
                 <div className='hidden lg:flex justify-between gap-10 '>
                    {

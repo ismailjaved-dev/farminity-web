@@ -38,7 +38,7 @@ const Footer = () => {
              }
             </div>
           </div>
-          {/* <div className='bg-secondary py-11'>
+          <div className='bg-secondary py-11'>
              <div className='fluid-container justify-between grid grid-cols-4'>
                <Image src={"/footerLogo.svg"} width={160} height={130} alt=''/>
                {
@@ -62,7 +62,7 @@ const Footer = () => {
                 <p className='text-[0.75rem] text-white cursor-pointer'>COOKIE POLICY</p>  
                 <p className='text-[0.75rem] text-white cursor-pointer'>FAQ</p>  
              </div>
-          </div> */}
+          </div>
         </div>
     </>
   )
