@@ -80,12 +80,20 @@
      @apply max-w-fluid mx-auto w-full
   }
 
+  .modalBtnSurface{
+    @apply bg-surface text-secondary hover:bg-surface/90 px-[1.875rem] py-[0.9375rem] text-[0.75rem]
+  }
+
+  .modalBtnSecondary{
+    @apply bg-secondary text-white hover:bg-secondary/90 px-[1.875rem] py-[0.9375rem] text-[0.75rem]
+  }
+
 }
 
 
 .swiper-slide{
   min-height: 200px !important;
-  min-width: 200px !important;
+  /* min-width: 200px !important; */
 }
 
 /* .swiper-button-next::after,.swiper-button-prev::after{

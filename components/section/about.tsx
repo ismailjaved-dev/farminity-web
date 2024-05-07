@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react"; 
 import { ChevronLeft } from "lucide-react"; 
-import { Navigation } from 'swiper/modules';
+
 
 const About = () => {
   const data = [
@@ -56,7 +56,7 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-surface w-full py-20 overflow-x-hidden">
+    <div className="bg-surface w-full py-20 px-5 overflow-x-hidden">
       <div className="fluid-container flex justify-center px-5">
         <h2 className="text-h3 md:text-h2 max-w-[900px] font-heading text-center text-secondary">
           From tranquil moments to hands-on experiences, discover the activities
@@ -73,9 +73,22 @@ const About = () => {
 
       <div className="fluid-container overflow-visible">
         <Swiper
-          slidesPerView={6}
+          slidesPerView={1}
           spaceBetween={30}
-          
+          breakpoints={{
+             640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+          }}
           className="mySwiper !overflow-visible min-h-[12.5rem]"
         >
           {data.map((res, index) => {

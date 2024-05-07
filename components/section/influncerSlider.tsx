@@ -27,15 +27,15 @@ const InfluncerSlider = () => {
         {
           data.map((res,index)=>{
             return(
-              <SwiperSlide key={index} className='bg-surface px-10 pt-4 !flex items-center'>
-                <Image src={"/influncerImg.svg"} width={200} height={200} alt='' className='!w-[30%]'/>
+              <SwiperSlide key={index} className='bg-surface px-5 sm:px-10 pt-4 !flex items-center'>
+                <Image src={"/influncerImg.svg"} width={200} height={200} alt='' className='!w-[30%] self-end	hidden lg:block'/>
                <div>
-               <div className='flex justify-between gap-5 items-start'>
-               <Image src={'./apostrophe.svg'} width={69} height={49} alt='' />
-                <h4 className='text-h4 mt-[40px]'>{res.text}</h4>
+               <div className='flex justify-between gap-2 sm:gap-5 items-start'>
+               <Image src={'./apostrophe.svg'} width={69} height={49} alt='' className='w-10 md:w-[69px]'/>
+                <h4 className='text-[20px] sm:text-h5 lg:text-h4 mt-[40px]'>{res.text}</h4>
                </div>
-                 <div className='flex flex-col items-end min-w-[300px]'>
-                 <h2 className='text-h2 font-heading'>{res.name}</h2>
+                 <div className='flex flex-col items-end py-5'>
+                 <h2 className='text-h3 sm:text-h2 font-heading'>{res.name}</h2>
                 <p className='text-primary'> {res.occupation}</p>
                  </div>
                </div>
