@@ -4,39 +4,80 @@ import { Button } from '../ui/button'
 import React, { useState } from "react";
 import { collection, getDocs, setDoc, doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../app/firbaseConfig";
+import { useToast } from "@/components/ui/use-toast"
 
 
 
 const Form = () => {
 
+  const { toast } = useToast()
+
   const [data, setData] = useState({
     name: "",
     email:"",
     message:"",
-    date:"",
-    bookingType:"",
-    activeStatus: false
   })
 
-  const handleClick = async (e) =>{
+  const [disable, setDisable] = useState(false);
 
+  const dataUploaded = () => {
+    toast({
+      description: "Your data has been submitted.",
+      style: {
+        backgroundColor: "#FFF", // Red background color
+        color: "#9AA6B6", // White text color
+        border: "2px solid #FFF", // Red border
+      }
+    })
+    console.log("data Uploaded");
+    setData({
+      name: "",
+      email:"",
+      message: ""
+    })
+    setDisable(false);
+  };
+
+  const handleClick = async () =>{
+
+    if (!data.name || !data.email || !data.message) {
+      toast({
+        variant: "destructive",
+        description: "Please fill in all fields.",
+        style: {
+          backgroundColor: "#FF5B5B", // Red background color
+          color: "#FFFFFF", // White text color
+          border: "2px solid #FF5B5B", // Red border
+        }
+      });
+      return; // Exit function early if any field is empty
+    }
+ 
       const dataList = []
-      const querySnapshot = await getDocs(collection(db, "BookingData"));
+      const querySnapshot = await getDocs(collection(db, "Form-Contact"));
       querySnapshot.forEach((doc) => {
           dataList.push(doc.data())
       });
       
   
-      const id = dataList.length == 0 ? 1 : dataList.pop().id + 1;
+      const id = dataList.length == 0 ? 1 : dataList.length + 1;
 
       try {
-        const docRef = await setDoc(doc(collection(db, "BookingData"), id.toString()), {
+        const docRef = await setDoc(doc(collection(db, "Form-Contact"), id.toString()), {
           ...data,
           id: id
       });
-         console.log('Data Uploaded')
+      dataUploaded()
     } catch (error) {
-        console.log(error)
+      toast({
+        variant: "destructive",
+        description: "Form not submitted",
+        style: {
+          backgroundColor: "#FF5B5B", // Red background color
+          color: "#FFFFFF", // White text color
+          border: "2px solid #FF5B5B", // Red border
+        }
+      });
     }
 }
 
@@ -54,7 +95,7 @@ const Form = () => {
       </div>
 
       <div>
-        <form className='flex flex-wrap sm:grid grid-cols-2 gap-5 bg-surface p-5'>
+        <div className='flex flex-wrap sm:grid grid-cols-2 gap-5 bg-surface p-5'>
             <input className='w-full bg-white p-3 text-secondary placeholder:text-secondary font-sans outline-none text-[12px] placeholder:text-[12px]'
              placeholder='Name'
              value={data.name}
@@ -71,10 +112,10 @@ const Form = () => {
             value={data.message}
             onChange={(e)=> setData({...data, message:e.target.value})}
             ></textarea>
-            <Button className='col-start-1 col-end-3 !bg-secondary w-full' onClick={handleClick}>
+            <Button className='col-start-1 col-end-3 !bg-secondary w-full' disabled={disable && true} onClick={()=> handleClick()}>
                 SEND
             </Button>
-        </form>
+        </div>
       </div>
     </div>
   )
