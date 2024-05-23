@@ -81,7 +81,7 @@
   }
 
   .modalBtnSurface{
-    @apply bg-surface text-secondary hover:bg-surface/90 px-[1.875rem] py-[0.9375rem] text-[0.75rem]
+    @apply !bg-surface !text-secondary hover:bg-surface/90 px-[1.875rem] py-[0.9375rem] text-[0.75rem]
   }
 
   .modalBtnSecondary{

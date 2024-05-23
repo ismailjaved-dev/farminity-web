@@ -114,7 +114,7 @@ const Hero: React.FC<HeroProps> = ({ text, heading }) => {
           <div>
             <div className="fluid-container relative z-10 lg:bg-white mt-10 p-5 w-fit">
               <div className="block lg:hidden">
-              <BookModal type="modalBtnSurface"/>
+              <BookModal type=""/>
                 </div>
               <div className="block lg:hidden"></div>
 

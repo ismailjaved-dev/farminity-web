@@ -13,6 +13,7 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
 import { dataUploader } from '@/lib/utils';
+import { Button } from './button';
   
 
 interface HeroProps {
@@ -42,7 +43,6 @@ const BookModal: React.FC<HeroProps> = ({type}) => {
           border: "2px solid #FFF", // Red border
         }
       })
-      console.log("data Uploaded");
       setData({
         name: "",
         phone:"",
@@ -83,11 +83,17 @@ const BookModal: React.FC<HeroProps> = ({type}) => {
         }
       });
     };
+
+    const handleClick = () =>{
+      window.location.href = "https://wa.me/"
+    }  
  
 
   return (
-    <AlertDialog>
-    <AlertDialogTrigger className={type}>Book Now</AlertDialogTrigger>
+<>
+ <Button className={`block lg:hidden ${type}`} onClick={()=> handleClick()}>Book Now</Button>
+<AlertDialog>
+    <AlertDialogTrigger className={`hidden lg:block ${type}`}>Book Now</AlertDialogTrigger>
     <AlertDialogContent className='!bg-surface'>
       <AlertDialogHeader>
         <AlertDialogTitle>Booking</AlertDialogTitle>
@@ -122,6 +128,7 @@ const BookModal: React.FC<HeroProps> = ({type}) => {
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>
+</>
   )
 }
 
